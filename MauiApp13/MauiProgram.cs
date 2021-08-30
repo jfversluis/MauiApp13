@@ -18,6 +18,11 @@ namespace MauiApp13
                 .ConfigureMauiHandlers(handlers =>
                 {
                     handlers.AddCompatibilityRenderers(typeof(Xamarin.CommunityToolkit.UI.Views.SemanticOrderViewRenderer).Assembly);
+
+#if ANDROID
+                    handlers.AddCompatibilityRenderer(typeof(Xamarin.CommunityToolkit.UI.Views.Shield),
+                        typeof(Microsoft.Maui.Controls.Compatibility.Platform.Android.ViewRenderer));
+#endif
                 })
                 .ConfigureFonts(fonts =>
                 {
